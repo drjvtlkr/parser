@@ -271,6 +271,16 @@ window.onload = function() {
                 case 'cos':
                 case 'sin':
                 case 'tan':
+                case 'cot':
+                case 'cosec':
+                case 'sec':
+                case 'cot':
+                case 'sech':
+                case 'cosh':
+                case 'tanh':
+                case 'sech':
+                case 'cosech':
+                case 'coth':
                     return '\\' + this.optoken.text + '\\left(' + this.PrettyMath_SingleArg() + '\\right)';
 
                 default:
