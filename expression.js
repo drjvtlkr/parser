@@ -80,7 +80,7 @@ window.onload = function() {
             if (this.arglist[1].precedence < this.precedence) {
                 right = '\\left(' + right + '\\right)';
             } else {
-                right = '{' + right + '}';  // for exponentiation
+                right = '{' + right + '}'; // for exponentiation
             }
 
             return left + this.optoken.text + right;
@@ -165,18 +165,54 @@ window.onload = function() {
     }
 
     const GreekLetters = {
-        'alpha':true, 'beta':true, 'gamma':true, 'delta':true,
-        'epsilon':true, 'zeta':true, 'eta':true, 'theta':true,
-        'iota':true, 'kappa':true, 'lambda':true, 'mu':true,
-        'nu':true, 'xi':true, 'omicron':true, 'pi':true,
-        'rho':true, 'sigma':true, 'tau':true, 'upsilon':true,
-        'phi':true, 'chi':true, 'psi':true, 'omega':true,
-        'Alpha':true, 'Beta':true, 'Gamma':true, 'Delta':true,
-        'Epsilon':true, 'Zeta':true, 'Eta':true, 'Theta':true,
-        'Iota':true, 'Kappa':true, 'Lambda':true, 'Mu':true,
-        'Nu':true, 'Xi':true, 'Omicron':true, 'Pi':true,
-        'Rho':true, 'Sigma':true, 'Tau':true, 'Upsilon':true,
-        'Phi':true, 'Chi':true, 'Psi':true, 'Omega':true
+        'alpha': true,
+        'beta': true,
+        'gamma': true,
+        'delta': true,
+        'epsilon': true,
+        'zeta': true,
+        'eta': true,
+        'theta': true,
+        'iota': true,
+        'kappa': true,
+        'lambda': true,
+        'mu': true,
+        'nu': true,
+        'xi': true,
+        'omicron': true,
+        'pi': true,
+        'rho': true,
+        'sigma': true,
+        'tau': true,
+        'upsilon': true,
+        'phi': true,
+        'chi': true,
+        'psi': true,
+        'omega': true,
+        'Alpha': true,
+        'Beta': true,
+        'Gamma': true,
+        'Delta': true,
+        'Epsilon': true,
+        'Zeta': true,
+        'Eta': true,
+        'Theta': true,
+        'Iota': true,
+        'Kappa': true,
+        'Lambda': true,
+        'Mu': true,
+        'Nu': true,
+        'Xi': true,
+        'Omicron': true,
+        'Pi': true,
+        'Rho': true,
+        'Sigma': true,
+        'Tau': true,
+        'Upsilon': true,
+        'Phi': true,
+        'Chi': true,
+        'Psi': true,
+        'Omega': true
     };
 
     class Expression_Identifier extends Expression {
@@ -252,7 +288,7 @@ window.onload = function() {
             this.nextTokenIndex = 0;
             this.tokenList = [];
             const reToken = /[0-9]+(\.[0-9]*)?([eE][\+\-]?[0-9]+)?|[A-Za-z_][A-Za-z_0-9]*|\S/g;
-            for(;;) {
+            for (;;) {
                 const match = reToken.exec(text);
                 if (match === null) {
                     break;
@@ -319,7 +355,7 @@ window.onload = function() {
 
             let expr = this.ParseAtom();
             if (optoken = this.NextTokenIs(['^'])) {
-                const right = this.ParsePowExpr();      // use recursion for right-associative ^ operator
+                const right = this.ParsePowExpr(); // use recursion for right-associative ^ operator
                 return new Expression_Power(optoken, expr, right);
             }
 
@@ -331,7 +367,7 @@ window.onload = function() {
             const token = this.GetNextToken();
             if (token.kind === 'identifier') {
                 if (this.NextTokenIs(['('])) {
-                    const arglist = [ this.ParseExpr() ];
+                    const arglist = [this.ParseExpr()];
                     this.ExpectToken(')');
                     return new Expression_Function(token, arglist);
                 }
@@ -400,7 +436,7 @@ window.onload = function() {
     const parseButton = document.getElementById('ParseButton');
     const errorBox = document.getElementById('ParseError');
     const prettyPrintBox = document.getElementById('PrettyPrint');
-    parseButton.addEventListener('click', function(){
+    parseButton.addEventListener('click', function() {
         errorBox.innerText = '';
         prettyPrintBox.innerText = '';
 
